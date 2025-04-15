@@ -102,9 +102,6 @@ async function seedRevenue() {
 }
 
 export async function GET() {
-  if (process.env.VERCEL) {
-    return Response.json({ error: 'Seeding is disabled in production' }, { status: 403 });
-  }
   try {
     const result = await sql.begin((sql) => [
       seedUsers(),
